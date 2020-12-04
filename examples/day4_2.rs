@@ -1,7 +1,6 @@
 use std::fs::File;
 use std::io::Read;
 use std::collections::HashSet;
-use std::iter::FromIterator;
 
 #[macro_use] extern crate lazy_static;
 extern crate regex;
@@ -75,7 +74,7 @@ impl Passport {
             static ref DIGIT_9: Regex = Regex::new(r"^\d{9}$").unwrap();
             static ref EYE_COLOR: HashSet<&'static str> = {
                 let mut m: HashSet<&'static str> = HashSet::new();
-                for col in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"].into_iter() {
+                for col in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"].iter() {
                     m.insert(col);
                 }
                 m
