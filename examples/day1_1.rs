@@ -15,7 +15,7 @@ fn main() {
         1963, 1491, 1777, 1799, 1363, 1579, 1367, 1863, 1983, 1679, 1944, 1654, 1953, 1297, 530,
         1502, 1738, 1934, 1185, 1998, 1764, 1856, 1207, 1181, 1494, 1676, 1900, 1057, 339, 1994,
         2006, 1536, 2007, 644, 1173, 1692, 1493, 1756, 1916, 1890, 1908, 1887, 1241, 1447, 1997,
-        1967, 1098, 1287, 1392, 1932
+        1967, 1098, 1287, 1392, 1932,
     ];
     match find_sum2(&expenses, 2020) {
         Some((i, j)) => {
@@ -23,13 +23,11 @@ fn main() {
         }
         None => println!("No matches found!"),
     }
-
 }
 
-fn find_sum2(input:  &[u32], sum: u32) -> Option<(u32, u32)> {
-
+fn find_sum2(input: &[u32], sum: u32) -> Option<(u32, u32)> {
     let mut viewed = BTreeSet::new();
-    
+
     for i in input {
         let comp = sum - i;
         if viewed.contains(&comp) {

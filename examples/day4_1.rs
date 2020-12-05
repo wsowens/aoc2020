@@ -16,7 +16,7 @@ fn parse_file(input: &str) -> Result<(usize, usize), String> {
     let mut count = 0;
     let mut total = 0;
     let mut passport: Passport = Default::default();
-    
+
     for field in input.split(&[' ', '\n'][..]) {
         match field {
             "" => {
@@ -28,7 +28,11 @@ fn parse_file(input: &str) -> Result<(usize, usize), String> {
                 passport = Default::default();
             }
             _ => {
-                let (key, _) = field.split_at(field.find(':').ok_or(format!("field missing colon: {}", field))?);
+                let (key, _) = field.split_at(
+                    field
+                        .find(':')
+                        .ok_or(format!("field missing colon: {}", field))?,
+                );
                 passport.update(key, true)?;
             }
         }
@@ -46,7 +50,7 @@ struct Passport {
     hcl: bool,
     ecl: bool,
     pid: bool,
-    cid: bool
+    cid: bool,
 }
 
 impl Passport {
@@ -64,7 +68,7 @@ impl Passport {
         }
         Ok(())
     }
-    
+
     fn valid(&self) -> bool {
         self.byr && self.iyr && self.eyr && self.hgt && self.hcl && self.ecl && self.pid
     }

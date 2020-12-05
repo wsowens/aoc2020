@@ -2,7 +2,6 @@ use std::fs::File;
 use std::io;
 use std::io::BufRead;
 
-
 extern crate regex;
 
 use regex::Regex;
@@ -33,8 +32,7 @@ fn main() {
             } else {
                 println!("\u{001B}[31m{}\u{001B}[0m", line.trim());
             }
-        }
-        else {
+        } else {
             break;
         }
     }
